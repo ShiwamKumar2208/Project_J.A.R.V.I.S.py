@@ -79,7 +79,7 @@ if __name__ == "__main__":
         elif "open wikipedia" in query:
             speak("here it is")
             webbrowser.get(chrome_path).open("wikipedia.com")
-        elif "open my yt channel" in query:
+        elif "open my youtube channel" in query:
             speak("here it is")
             webbrowser.get(chrome_path).open("https://www.youtube.com/channel/UC556qZbJolO8iLxh1n2u4vQ?view_as=subscriber")
         elif "open twitter" in query:
@@ -124,7 +124,7 @@ if __name__ == "__main__":
             speak("recognizing")
             speak("sir, plz enter what do you want to search")
             pc = input("Enter google search = ")
-            speak("searching google...")
+            speak("searching on google...")
             webbrowser.get(chrome_path).open("https://google.com/?q="+pc)
         else:
             print("sorry the command you entered is not satisfied")
