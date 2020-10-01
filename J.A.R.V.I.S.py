@@ -1,4 +1,5 @@
 import getpass
+import pyautogui
 import time
 import pyttsx3
 import speech_recognition as sr
@@ -9,10 +10,11 @@ import os
 import sys
 import smtplib
 
-#plz enter your chrome_path
+#plz enter your chrome_path and don't forgot to write %s in the chrome_path end
 chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
+#i am using microsoft david for my jarvis you can also make friday with the help of ([1].id)
 engine.setProperty("voice", voices[0].id)
 password = "hello"
 
@@ -30,6 +32,10 @@ def wishMe():
         speak("Good Evening Sir")
 
     speak("I am jarvis your assistant how may i help you")
+
+def screenshot():
+    img = pyautogui.screenshot()
+    img.save("D:\\scr\\screenshot.png") #path where screenshot will be saved
 
 def takeCommand():
     r = sr.Recognizer()
@@ -58,10 +64,7 @@ def passWord():
     else:
         print("The code is exited with status (NOT DONE)\nSorry you can't able to use jarvis")
         time.sleep(5)
-        s = "exit"
-        res = app.query(query)
-        print(next(res.results).text)
-        speak(next(res.results).text)
+        quit()
 
 if __name__ == "__main__":
     passWord()
@@ -76,6 +79,9 @@ if __name__ == "__main__":
         elif "who are you" in query:
             speak("I am your assistant jarvis")
             print("I am your assistant jarvis")
+        elif "take screenshot" in query:
+            speak("taking screenshot")
+            screenshot()
         elif "open wikipedia" in query:
             speak("here it is")
             webbrowser.get(chrome_path).open("wikipedia.com")
@@ -126,6 +132,9 @@ if __name__ == "__main__":
             pc = input("Enter google search = ")
             speak("searching google...")
             webbrowser.get(chrome_path).open("https://google.com/?q="+pc)
+        elif "abort" in query:
+            speak("closing program thanks sir for giving me your precious time")
+            quit()
         else:
             print("sorry the command you entered is not satisfied")
             speak("sorry the command you entered is not satisfied")
