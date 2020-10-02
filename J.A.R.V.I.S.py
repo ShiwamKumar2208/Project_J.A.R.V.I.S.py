@@ -135,6 +135,10 @@ if __name__ == "__main__":
         elif "abort" in query:
             speak("closing program thanks sir for giving me your precious time")
             quit()
+        elif "hello" in query:
+            print("Hello sir")
+            speak("Hello sir")
         else:
             print("sorry the command you entered is not satisfied")
             speak("sorry the command you entered is not satisfied")
+
